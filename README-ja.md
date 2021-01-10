@@ -257,10 +257,14 @@ pLaTeX / upLaTeX / LuaLaTeX上で動きます．以下のパッケージを内�
 
 #### 行取り
 行取りの指定は以下のいずれかの方法で行うことができます．
+##### 行数を指定し，その中央に配置する
+* `lines=<自然数値>`：行数を指定します．
+* `before_lines=<自然数値>`, `after_lines=<自然数値>`：さらに前後に追加する行数を指定します．
 
-* 行数を指定し，その中央に配置します．`lines=<自然数値>`により行数を指定します．`before_lines=<自然数値>`や`after_lines=<自然数値>`により，さらに前後に追加する行数を指定します．たとえば`lines=3,after_lines=1`とすれば，四行の中に配置され，前の空きよりも後ろの空きの方が一行分大きくなります．`before_lines`により指定された空きはページ頭には入りませんが，`before_lines=*1`というように`*`を先頭につけると常に入るようになります．
-* 行数と，前後いずれかの空きを指定します．`lines=<自然数値>`により行数を，`before_space=<寸法>`または`after_space=<寸法>`のいずれかの指定によりそれぞれ前または後ろの空きを指定します．
-* 前後の空きを指定します．`before_space=<寸法>`および`after_space=<寸法>`を指定します．
+たとえば`lines=3,after_lines=1`とすれば，四行の中に配置され，前の空きよりも後ろの空きの方が一行分大きくなります．`before_lines`により指定された空きはページ頭には入りませんが，`before_lines=*1`というように`*`を先頭につけると常に入るようになります．
+##### 行数と，前後いずれかの空きを指定する
+* `lines=<自然数値>`：行数を指定します．
+* `before_space=<寸法>`, `after_space=<寸法>`：いずれかの指定によりそれぞれ前または後ろの空きを指定します．
 
 #### 連続して掲げる見出しの行取り
 ``\SetBlockHeadingSpaces``により，見出しが連続して掲げられたときの行取りを設定することができます．``\SetBlockHeadingSpaces``は
@@ -338,7 +342,12 @@ pLaTeX / upLaTeX / LuaLaTeX上で動きます．以下のパッケージを内�
 * `nombre=<書式>`：出力するノンブルを指定します．デフォルトは`\thepage`．
 * `odd_running_head=<書式>`，`even_running_head=<書式>`：それぞれ奇数ページ，偶数ページの柱を指定します．`_section`のように`_`から始まる名前を指定すると，対応する見出しを出力します．（`_section`だと現在の`\section`を出力する．）
 * `mark_format={[odd=<書式>/even=<書式>/_<見出し命令名>=<書式>],...}`：見出しを柱に出力する際のフォーマットを指定します．`mark_format={_section={節\thesection：#1},_chapter={第\thechapter 章\quad #1}}`のように指定します．見出し命令名の代わりに`odd`や`even`も指定でき，それぞれ奇数ページ/偶数ページの柱の書式になります．`\pagestyle`実行時に`\sectionmark`等を定義することで実現しています．
-* `nombre_ii=<書式>`: 二つ目のノンブルを指定します．`nombre_ii_position`で場所指定，`nombre_ii_font`でフォント設定もできます．指定方法は`nombre`や`nombre_position`と同じです．`odd_running_head_ii`，`even_running_head_ii`，`running_head_ii_position`，`running_head_ii_font`もあります．`nombre_ii_position`や`running_head_ii_position`が指定されなかった場合，`yoko`指定時にはそれぞれ`nombre_position`および`running_head_position`と同じ位置に設定されます．`tate`指定時は一つ目のノンブルや柱に続く場所に表示されます．
+
+二つ目のノンブル・柱を指定することができます。指定方法は`nombre`や`nombre_position`と同じです．
+* `nombre_ii`, `nombre_ii_position`, `nombre_ii_font`
+* `odd_running_head_ii`, `even_running_head_ii`, `running_head_ii_position`, `running_head_ii_font`
+
+`nombre_ii_position`や`running_head_ii_position`が指定されなかった場合，`yoko`指定時にはそれぞれ`nombre_position`および`running_head_position`と同じ位置に設定されます．`tate`指定時は一つ目のノンブルや柱に続く場所に表示されます．
 
 
 `\RenewPageStyle`，`\ProvidePageStyle`，`\DeclarePageStyle`もあります．`\ModifyPageStyle`により既存のページスタイルを改変することが可能です．
